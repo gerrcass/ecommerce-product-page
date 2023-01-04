@@ -1,19 +1,25 @@
+import { useState } from "react"
 import Image from "next/image"
 
-const ImageGallery = () => {
+import { Thumbnail } from './Thumbnail'
+
+const ImageGallery = ({ images }) => {
+    const [activeImage, setActiveImage] = useState(images[0].product)
+
     return (
-        <div className="w-1/2 flex items-center justify-center">
-            <div className="">
-                <Image className="mx-auto object-contain rounded-xl" width={400} height={400} src='/images/image-product-1.jpg' alt='Logo' priority={true} />
-                <div className="flex justify-between items-center mt-8">
-                    <div className="w-20 h-20 bg-yellow-200 rounded-xl"></div>
-                    <div className="w-20 h-20 bg-blue-300 rounded-xl"></div>
-                    <div className="w-20 h-20 bg-red-300 rounded-xl"></div>
-                    <div className="w-20 h-20 bg-orange-300 rounded-xl"></div>
-                </div>
+        <div>
+            <Image className="mx-auto object-contain rounded-xl" width={400} height={400} src={activeImage} alt='Logo' priority={true} />
+            <div className="flex justify-between items-center mt-8">
+                {images.slice(0, 4).map((image) => (
+                    <Thumbnail
+                        key={image.id}
+                        image={image}
+                        activeImage={activeImage}
+                        setActiveImage={setActiveImage}
+                    />
+                ))}
             </div>
         </div>
-
     )
 }
 
