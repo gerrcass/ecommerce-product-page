@@ -5,23 +5,22 @@ import { Lightbox } from "../Lightbox/Lightbox"
 
 const ImageGallery = ({ images }) => {
     const [openModal, setOpenModal] = useState(false)
-    const [selectedImage, setSelectedImage] = useState('')
+    const [selectedImageIndex, setSelectedImageIndex] = useState(0)
 
     return (
         <>
             <GalleryComponent
                 images={images}
-                setSelectedImage={setSelectedImage}
+                setSelectedImageIndex={setSelectedImageIndex}
                 setOpenModal={setOpenModal}
             />
             {openModal &&
                 <Lightbox
                     setOpenModal={setOpenModal}
-                    selectedImage={selectedImage}
                     render={
                         <GalleryComponent
                             images={images}
-                            selectedImage={selectedImage}
+                            selectedImageIndex={selectedImageIndex}
                             setOpenModal={setOpenModal}
                         />}
                 />

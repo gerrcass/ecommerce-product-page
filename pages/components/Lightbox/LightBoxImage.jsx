@@ -1,6 +1,6 @@
 import Image from 'next/image'
 
-const LightBoxImage = ({ src, setOpenModal, width, height }) => {
+const LightBoxImage = ({ src, handleImageChange, setOpenModal, width, height }) => {
 
     return (
         <div className="relative">
@@ -13,7 +13,7 @@ const LightBoxImage = ({ src, setOpenModal, width, height }) => {
             </button>
             <button
                 type='button'
-                onClick={() => console.log('Next clicked')}
+                onClick={() => handleImageChange('next')}
                 className="absolute top-1/2 transform -translate-y-1/2 -right-6 bg-white w-12 h-12 flex justify-center items-center rounded-full hover:cursor-pointer"
                 aria-label="Next image"
             >
@@ -21,7 +21,7 @@ const LightBoxImage = ({ src, setOpenModal, width, height }) => {
             </button>
             <button
                 type='button'
-                onClick={() => console.log('Previous clicked')}
+                onClick={() => handleImageChange('prev')}
                 className="absolute top-1/2 transform -translate-y-1/2 -left-6 bg-white w-12 h-12 flex justify-center items-center rounded-full hover:cursor-pointer"
                 aria-label="Previous image"
             >
