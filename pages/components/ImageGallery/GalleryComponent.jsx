@@ -9,8 +9,6 @@ const GalleryComponent = ({ images, setOpenModal, selectedImage = images[0].prod
 
     useEffect(() => setSelectedImage && setSelectedImage(activeImage), [activeImage])
 
-    const handleModal = () => setOpenModal(true)
-
     return (
         <div onClick={(e) => e.stopPropagation()} className={`${lightBox && 'mt-24'}`}>
             {lightBox ?
@@ -22,7 +20,7 @@ const GalleryComponent = ({ images, setOpenModal, selectedImage = images[0].prod
                 /> :
                 <Image
                     src={activeImage}
-                    onClick={setOpenModal ? handleModal : undefined}
+                    onClick={() => setOpenModal(true)}
                     width={400}
                     height={400}
                     className="mx-auto object-contain rounded-xl" alt='Product image' priority={true}

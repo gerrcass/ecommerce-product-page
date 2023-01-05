@@ -23,7 +23,6 @@ const ImageGallery = ({ images }) => {
                             images={images}
                             selectedImage={selectedImage}
                             setOpenModal={setOpenModal}
-                            lightBox={true}
                         />}
                 />
 
