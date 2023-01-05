@@ -2,7 +2,7 @@ import Image from "next/image"
 
 const Header = () => {
     return (
-        <header className="mx-auto max-w-xs md:max-w-[66rem] border-b border-neutral-lightgrayishblue">
+        <header className="mx-auto max-w-xs md:max-w-[66rem] border-b border-neutral-grayishblue border-opacity-20">
             <div className="flex justify-between items-center">
                 <div className="flex items-center md:flex-row-reverse">
                     <nav className="flex items-end">

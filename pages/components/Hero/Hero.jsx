@@ -26,14 +26,14 @@ const images = [
 
 const Hero = () => {
     return (
-        <div className="mx-auto max-w-xs md:max-w-[66rem] flex py-20 mb-20">
+        <section className="mx-auto max-w-xs md:max-w-[66rem] flex py-20 mb-20">
             <div className="w-1/2 flex items-center justify-center">
                 <ImageGallery images={images} />
             </div>
             <div className="w-1/2 flex flex-col items-start justify-center px-16">
                 <HeroText addToCard={() => console.log('Added to card')} />
             </div>
-        </div >
+        </section >
     )
 }
 
