@@ -1,7 +1,7 @@
 
 const Hero = ({ children }) => {
     return (
-        <section className="mx-auto max-w-xs md:max-w-[66rem] flex py-20 mb-20">
+        <section className="flex flex-col desktop:flex-row mx-auto max-w-[375px] desktop:max-w-[66rem] border-2 border-t-0 p-0 desktop:pt-[4.6rem] desktop:pb-12">
             {children}
         </section >
     )
