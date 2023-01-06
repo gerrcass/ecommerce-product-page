@@ -3,15 +3,15 @@ import { useState } from "react"
 import { GalleryComponent } from "./GalleryComponent"
 import { Lightbox } from "../Lightbox/Lightbox"
 
-const ImageGallery = ({ images }) => {
+const ImageGallery = ({ product }) => {
     const [openModal, setOpenModal] = useState(false)
-    const [selectedImageIndex, setSelectedImageIndex] = useState(0)
+    const [selectedImage, setSelectedImage] = useState(0)
 
     return (
         <>
             <GalleryComponent
-                images={images}
-                setSelectedImageIndex={setSelectedImageIndex}
+                product={product}
+                setSelectedImage={setSelectedImage}
                 setOpenModal={setOpenModal}
             />
             {openModal &&
@@ -19,8 +19,8 @@ const ImageGallery = ({ images }) => {
                     setOpenModal={setOpenModal}
                     render={
                         <GalleryComponent
-                            images={images}
-                            selectedImageIndex={selectedImageIndex}
+                            product={product}
+                            selectedImage={selectedImage}
                             setOpenModal={setOpenModal}
                         />}
                 />

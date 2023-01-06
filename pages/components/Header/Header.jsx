@@ -1,6 +1,12 @@
 import Image from "next/image"
+import { useState } from "react";
 
-const Header = () => {
+const Header = ({ cartItems, removeFromCard }) => {
+    const [isCartShown, setIsCartShown] = useState(false);
+
+
+    // useEffect(() => console.log(isCartShown), [isCartShown])
+
     return (
         <header className="mx-auto max-w-xs md:max-w-[66rem] border-b border-neutral-grayishblue border-opacity-20">
             <div className="flex justify-between items-center">
@@ -10,11 +16,11 @@ const Header = () => {
                         <div className="absolute top-0 left-0 z-10 md:static">
                             <div className="block md:hidden">X</div>
                             <ul className="flex flex-col md:flex-row md:space-x-8 md:ml-14 text-sm text-neutral-darkgrayishblue">
-                                <li><a href="#" className="hover:text-neutral-darkblue hover:font-semibold">Collections</a></li>
-                                <li><a href="#" className="hover:text-neutral-darkblue hover:font-semibold">Men</a></li>
-                                <li><a href="#" className="hover:text-neutral-darkblue hover:font-semibold">Women</a></li>
-                                <li><a href="#" className="hover:text-neutral-darkblue hover:font-semibold">About</a></li>
-                                <li><a href="#" className="hover:text-neutral-darkblue hover:font-semibold">Contact</a></li>
+                                <li><a href="#" className="block pt-10 pb-12 transition hover:border-b-4 hover:border-primary-orange hover:text-neutral-darkblue hover:font-semibold">Collections</a></li>
+                                <li><a href="#" className="block pt-10 pb-12 transition hover:border-b-4 hover:border-primary-orange hover:text-neutral-darkblue hover:font-semibold">Men</a></li>
+                                <li><a href="#" className="block pt-10 pb-12 transition hover:border-b-4 hover:border-primary-orange hover:text-neutral-darkblue hover:font-semibold">Women</a></li>
+                                <li><a href="#" className="block pt-10 pb-12 transition hover:border-b-4 hover:border-primary-orange hover:text-neutral-darkblue hover:font-semibold">About</a></li>
+                                <li><a href="#" className="block pt-10 pb-12 transition hover:border-b-4 hover:border-primary-orange hover:text-neutral-darkblue hover:font-semibold">Contact</a></li>
                             </ul>
                         </div>
                     </nav>
@@ -23,8 +29,68 @@ const Header = () => {
                     </div>
                 </div>
                 <div className="flex items-center">
-                    <svg className="mr-5 md:mr-8" width="22" height="20" xmlns="http://www.w3.org/2000/svg"><path d="M20.925 3.641H3.863L3.61.816A.896.896 0 0 0 2.717 0H.897a.896.896 0 1 0 0 1.792h1l1.031 11.483c.073.828.52 1.726 1.291 2.336C2.83 17.385 4.099 20 6.359 20c1.875 0 3.197-1.87 2.554-3.642h4.905c-.642 1.77.677 3.642 2.555 3.642a2.72 2.72 0 0 0 2.717-2.717 2.72 2.72 0 0 0-2.717-2.717H6.365c-.681 0-1.274-.41-1.53-1.009l14.321-.842a.896.896 0 0 0 .817-.677l1.821-7.283a.897.897 0 0 0-.87-1.114ZM6.358 18.208a.926.926 0 0 1 0-1.85.926.926 0 0 1 0 1.85Zm10.015 0a.926.926 0 0 1 0-1.85.926.926 0 0 1 0 1.85Zm2.021-7.243-13.8.81-.57-6.341h15.753l-1.383 5.53Z" fill="#69707D" fillRule="nonzero" /></svg>
-                    <Image className="pt-6 pb-8" src='/images/image-avatar.png' alt='Logo' width={50} height={50} />
+                    <div className="relative">
+                        <div className="relative">
+                            {
+                                (cartItems.items.length !== 0) &&
+                                <div className="absolute z-10 -top-[6px] -right-[10px] bg-primary-orange rounded-full flex justify-center items-center text-primary-pale font-bold text-[10px] px-[6px] py-[1.5px] leading-none transition">
+                                    {
+                                        //It should be cartItems.items.length, but we'll do it like this for demo purposes.
+                                        cartItems.items[0].quantity
+                                    }
+                                </div>
+                            }
+                            <svg onMouseEnter={() => setIsCartShown(true)} onMouseLeave={() => console.log} className="hover:cursor-pointer fill-neutral-darkgrayishblue transition opacity-90 hover:opacity-100" width="22" height="20" xmlns="http://www.w3.org/2000/svg"><path d="M20.925 3.641H3.863L3.61.816A.896.896 0 0 0 2.717 0H.897a.896.896 0 1 0 0 1.792h1l1.031 11.483c.073.828.52 1.726 1.291 2.336C2.83 17.385 4.099 20 6.359 20c1.875 0 3.197-1.87 2.554-3.642h4.905c-.642 1.77.677 3.642 2.555 3.642a2.72 2.72 0 0 0 2.717-2.717 2.72 2.72 0 0 0-2.717-2.717H6.365c-.681 0-1.274-.41-1.53-1.009l14.321-.842a.896.896 0 0 0 .817-.677l1.821-7.283a.897.897 0 0 0-.87-1.114ZM6.358 18.208a.926.926 0 0 1 0-1.85.926.926 0 0 1 0 1.85Zm10.015 0a.926.926 0 0 1 0-1.85.926.926 0 0 1 0 1.85Zm2.021-7.243-13.8.81-.57-6.341h15.753l-1.383 5.53Z" fillRule="nonzero" /></svg>
+                        </div>
+                        {
+                            isCartShown &&
+                            <div onMouseEnter={() => setIsCartShown(true)} onMouseLeave={() => setIsCartShown(false)} className="absolute top-11 left-1/2 transform -translate-x-1/2 bg-white shadow-2xl rounded-xl w-80 transition">
+                                <div className="border-b border-neutral-grayishblue border-opacity-20">
+                                    <p className="p-5 text-sm font-bold">
+                                        Cart
+                                    </p>
+                                </div>
+                                {
+                                    cartItems.items && cartItems.items.map(item => (
+                                        <div key={item.id} className="p-5 flex space-x-4 select-none">
+                                            <Image className="rounded-md" src={item.thumbnail} alt='Image thumbnail' width={45} height={45} />
+                                            <div className="flex flex-col justify-center  text-sm text-neutral-darkgrayishblue font-medium">
+                                                <p className="text-sm font-medium ">{item.name}</p>
+                                                <div className="flex space-x-2">
+                                                    <span className="">{`${(item.price * item.discount_percent / 100).toFixed(2)} x ${item.quantity}`}</span>
+                                                    <span className="font-bold ">{`$${(item.quantity * (item.price * item.discount_percent / 100)).toFixed(2)}`}</span>
+                                                </div>
+                                            </div>
+                                            <button
+                                                type="button"
+                                                onClick={() => removeFromCard(cartItems.items[0].id)}
+                                                className="flex justify-center items-center hover:cursor-pointer">
+                                                <svg className="scale-90 fill-neutral-darkgrayishblue transition opacity-30 hover:opacity-40" width="14" height="16" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink"><defs><path d="M0 2.625V1.75C0 1.334.334 1 .75 1h3.5l.294-.584A.741.741 0 0 1 5.213 0h3.571a.75.75 0 0 1 .672.416L9.75 1h3.5c.416 0 .75.334.75.75v.875a.376.376 0 0 1-.375.375H.375A.376.376 0 0 1 0 2.625Zm13 1.75V14.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 1 14.5V4.375C1 4.169 1.169 4 1.375 4h11.25c.206 0 .375.169.375.375ZM4.5 6.5c0-.275-.225-.5-.5-.5s-.5.225-.5.5v7c0 .275.225.5.5.5s.5-.225.5-.5v-7Zm3 0c0-.275-.225-.5-.5-.5s-.5.225-.5.5v7c0 .275.225.5.5.5s.5-.225.5-.5v-7Zm3 0c0-.275-.225-.5-.5-.5s-.5.225-.5.5v7c0 .275.225.5.5.5s.5-.225.5-.5v-7Z" id="a" /></defs><use fillRule="nonzero" xlinkHref="#a" /></svg>
+                                            </button>
+                                        </div>
+                                    ))
+                                }
+                                {
+                                    cartItems.items.length === 0
+                                        ?
+                                        <div className="flex justify-center items-center h-40 text-neutral-darkgrayishblue text-sm font-bold">
+                                            Your cart is empty.
+                                        </div>
+                                        :
+                                        <div className="px-5 pt-1 pb-6">
+                                            <button
+                                                type="button"
+                                                onClick={() => console.log('Checkout cliked')}
+                                                className="bg-primary-orange p-4 w-full rounded-xl text-primary-pale text-sm font-semibold transition bg-opacity-90 hover:bg-opacity-100"
+                                            >
+                                                Checkout
+                                            </button>
+                                        </div>
+                                }
+                            </div>
+                        }
+                    </div>
+                    <Image className="ml-5 md:ml-8 hover:cursor-pointer transition hover:border-2 hover:rounded-full hover:border-primary-orange" src='/images/image-avatar.png' alt='Logo' width={50} height={50} />
                 </div>
             </div>
         </header>

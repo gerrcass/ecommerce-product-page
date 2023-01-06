@@ -4,20 +4,19 @@ import Image from 'next/image'
 import { Thumbnail } from './Thumbnail'
 import { LightBoxImage } from '../Lightbox/LightBoxImage'
 
-const GalleryComponent = ({ images, setOpenModal, selectedImageIndex = images[0].id, setSelectedImageIndex, lightBox = false }) => {
-    const [activeImageIndex, setActiveImageIndex] = useState(selectedImageIndex)
+const GalleryComponent = ({ product, setOpenModal, selectedImage = product.images[0].thumbnail, setSelectedImage, lightBox = false }) => {
+    const [activeImage, setActiveImage] = useState(selectedImage)
 
-    useEffect(() => (setSelectedImageIndex && setSelectedImageIndex(activeImageIndex)), [activeImageIndex])
+    useEffect(() => (setSelectedImage && setSelectedImage(activeImage)), [activeImage])
 
     const getActiveImageUrl = () => {
-        const imageIndex = images.findIndex(image => image.id === activeImageIndex)
-        return images[imageIndex].product
+        const img = product.images.findIndex(image => image.thumbnail === activeImage)
+        return product.images[img].large
     }
     const handleImageChange = (operation) => {
-        const imageIndex = images.findIndex(image => image.id === activeImageIndex)
-
-        const nextImage = operation === 'next' ? images[imageIndex + 1] : images[imageIndex - 1]
-        nextImage && setActiveImageIndex(nextImage.id)
+        const img = product.images.findIndex(image => image.thumbnail === activeImage)
+        const nextImage = operation === 'next' ? product.images[img + 1] : product.images[img - 1]
+        nextImage && setActiveImage(nextImage.thumbnail)
     }
 
     return (
@@ -39,12 +38,12 @@ const GalleryComponent = ({ images, setOpenModal, selectedImageIndex = images[0]
                 />
             }
             <div className={`flex ${lightBox ? 'justify-around mx-10' : 'justify-between'} items-center mt-8`}>
-                {images.slice(0, 4).map((image) => (
+                {product.images.slice(0, 4).map((image, index) => (
                     <Thumbnail
-                        key={image.id}
-                        image={image}
-                        activeImageIndex={activeImageIndex}
-                        setActiveImageIndex={setActiveImageIndex}
+                        key={index}
+                        thumbnailPath={image.thumbnail}
+                        activeImage={activeImage}
+                        setActiveImage={setActiveImage}
                     />
                 ))}
             </div>
