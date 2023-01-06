@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 
 import { Header } from "./components/Header/Header"
 import { Hero } from "./components/Hero/Hero"
@@ -6,7 +6,9 @@ import { Footer } from './components/Footer/Footer'
 import { HeroTextArea } from "./components/Hero/HeroTextArea"
 import { HeroImageArea } from "./components/Hero/HeroImageArea"
 
-const products = [
+const initialStockExample = 10
+
+const fakeProductsDB = [
   {
     id: 1,
     name: 'Fall Limited Edition Sneakers',
@@ -14,7 +16,7 @@ const products = [
     company: 'Sneaker Company',
     price: 250,
     discount_percent: 50,
-    quantity_available: 10,
+    quantity_available: initialStockExample,
     images: [
       {
         large: '/images/image-product-1.jpg',
@@ -43,6 +45,9 @@ const initialState = {
 
 export default function Home() {
   const [cartItems, setCartItems] = useState(initialState)
+  const [products, setProducts] = useState(fakeProductsDB)
+
+  useEffect(() => setProducts(fakeProductsDB), [])
 
   const getCurrentTotal = () => cartItems.items.reduce((accumulator, currentValue) => {
     return accumulator + (currentValue.quantity * (currentValue.price * (currentValue.discount_percent / 100)))
@@ -67,19 +72,14 @@ export default function Home() {
         total: updatedTotal
       })
     } else {
-      const updatedItems = cartItems.items.map(item => {
-        if (item.id = id) {
-          const newItem = item
-          newItem.quantity = item.quantity + quantity
-          return newItem
-        }
-        return item
-      })
+      const updatedItems = cartItems.items.map(item => item.id = id ? { ...item, quantity: item.quantity + quantity } : item)
       setCartItems({
         items: updatedItems,
         total: updatedTotal
       })
     }
+    //Let's pretend to reduce stock in the database
+    setProducts(products.map(product => product.id === id ? { ...product, quantity_available: product.quantity_available - quantity } : product))
   }
 
 
@@ -93,6 +93,8 @@ export default function Home() {
       items: updatedCartItems,
       total: updatedTotal
     })
+    //Let's pretend to restore stock in the database
+    setProducts(products.map(product => product.id === productId ? { ...product, quantity_available: initialStockExample } : product))
   }
 
 
