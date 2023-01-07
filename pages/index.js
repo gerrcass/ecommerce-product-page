@@ -106,13 +106,8 @@ export default function Home() {
         removeFromCard={removeFromCard}
       />
       <Hero>
-        <HeroImageArea
-          product={products[0]}
-        />
-        <HeroTextArea
-          product={products[0]}
-          addToCard={addToCard}
-        />
+        <HeroImageArea product={products[0]} />
+        <HeroTextArea product={products[0]} addToCard={addToCard} />
       </Hero>
       <Footer />
     </>

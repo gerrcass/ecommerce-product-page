@@ -1,32 +1,51 @@
-import { useState } from "react"
+import { useEffect, useState } from 'react'
 
-import { GalleryComponent } from "./GalleryComponent"
-import { Lightbox } from "../Lightbox/Lightbox"
+import { FeaturedImage } from './FeaturedImage'
+import { ThumbnailList } from './ThumbnailList'
 
-const ImageGallery = ({ product }) => {
-    const [openModal, setOpenModal] = useState(false)
-    const [selectedImage, setSelectedImage] = useState(0)
+const ImageGallery = (
+    {
+        images,
+        selectedImage = images[0].thumbnail,
+        setSelectedImage,
+        wideLayout,
+        onClick,
+        width,
+        height
+    }) => {
+    const [activeImage, setActiveImage] = useState(selectedImage)
+
+
+    useEffect(() => (setSelectedImage && setSelectedImage(activeImage)), [activeImage])
+
+    const getActiveImagePath = () => {
+        const imgIndex = images.findIndex(img => img.thumbnail === activeImage)
+        return images[imgIndex].large
+    }
+    const handleImageNav = (operation) => {
+        const imgIndex = images.findIndex(img => img.thumbnail === activeImage)
+        const nextImage = operation === 'next' ? images[imgIndex + 1] : images[imgIndex - 1]
+        nextImage && setActiveImage(nextImage.thumbnail)
+    }
 
     return (
-        <>
-            <GalleryComponent
-                product={product}
-                setSelectedImage={setSelectedImage}
-                setOpenModal={setOpenModal}
+        <div id="gallery-container">
+            <FeaturedImage
+                onClick={onClick}
+                src={getActiveImagePath()}
+                wideLayout={wideLayout}
+                width={width}
+                height={height}
+                handleImageNav={handleImageNav}
             />
-            {openModal &&
-                <Lightbox
-                    setOpenModal={setOpenModal}
-                    render={
-                        <GalleryComponent
-                            product={product}
-                            selectedImage={selectedImage}
-                            setOpenModal={setOpenModal}
-                        />}
-                />
+            <ThumbnailList
+                images={images}
+                activeImage={activeImage}
+                setActiveImage={setActiveImage}
+                wideLayout={wideLayout}
+            />
+        </div>
 
-            }
-        </>
     )
 }
 
