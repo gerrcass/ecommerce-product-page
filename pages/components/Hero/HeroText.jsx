@@ -18,7 +18,7 @@ const HeroText = ({ product, addToCard }) => {
     return (
         <>
             <h2 className="tracking-wider text-primary-orange uppercase text-sm font-bold mb-3 min-w-max">{company}</h2>
-            <h1 className="text-[1.9rem] desktop:text-[2.9rem] font-extrabold mb-5 text-black leading-[30px]">{name}</h1>
+            <h1 className="text-[2rem] desktop:text-[2.9rem] font-extrabold mb-5 text-black leading-8 desktop:leading-[2.9rem]">{name}</h1>
             <p className="text-neutral-darkgrayishblue text-[15px] desktop:text-base mb-6 leading-6">{desc}</p>
 
             <div className="w-full flex desktop:flex-col mb-6 items-center desktop:items-start justify-between">

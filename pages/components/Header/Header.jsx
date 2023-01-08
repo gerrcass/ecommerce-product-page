@@ -5,7 +5,7 @@ const Header = ({ cartItems, removeFromCard }) => {
     const [isCartShown, setIsCartShown] = useState(false);
 
     return (
-        <header className="flex justify-between items-center h-[67px] desktop:h-24 mx-auto max-w-[375px] desktop:max-w-[66rem] border-b border-neutral-grayishblue border-opacity-20">
+        <header className="sticky top-0 z-30 bg-white flex justify-between items-center h-[67px] desktop:h-24 mx-auto max-w-[375px] desktop:max-w-[66rem] border-b border-neutral-grayishblue border-opacity-20">
             <div className="w-full flex justify-between items-center px-5 desktop:px-0">
                 <div className="flex items-center desktop:flex-row-reverse">
                     <nav className="">
@@ -42,7 +42,7 @@ const Header = ({ cartItems, removeFromCard }) => {
                         {
                             isCartShown &&
                             <div
-                                className="fixed desktop:absolute z-10 top-20 desktop:top-11 left-1/2 transform -translate-x-1/2 bg-white shadow-2xl rounded-xl w-80 transition"
+                                className="fixed desktop:absolute z-20 top-[86px] scale-110 desktop:scale-100 desktop:top-11 left-1/2 transform -translate-x-1/2 bg-white shadow-2xl rounded-xl h-60 w-80 transition"
                                 onMouseEnter={() => setIsCartShown(true)}
                                 onMouseLeave={() => setIsCartShown(false)}
                             >
