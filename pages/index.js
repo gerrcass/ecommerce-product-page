@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useState } from "react"
 
 import { Header } from "./components/Header/Header"
 import { Hero } from "./components/Hero/Hero"
@@ -46,8 +46,6 @@ const initialState = {
 export default function Home() {
   const [cartItems, setCartItems] = useState(initialState)
   const [products, setProducts] = useState(fakeProductsDB)
-
-  useEffect(() => setProducts(fakeProductsDB), [])
 
   const getCurrentTotal = () => cartItems.items.reduce((accumulator, currentValue) => {
     return accumulator + (currentValue.quantity * (currentValue.price * (currentValue.discount_percent / 100)))

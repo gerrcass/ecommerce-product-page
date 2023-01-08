@@ -13,8 +13,9 @@ const HeroGallery = ({ product }) => {
                 images={product.images}
                 setSelectedImage={setSelectedImage}
                 onClick={() => setOpenModal(true)}
-                width={400}
-                height={400}
+                width={{ mobile: 375, desktop: 400 }}
+                height={{ mobile: 300, desktop: 400 }}
+
             />
             {openModal &&
                 <Lightbox
@@ -23,8 +24,8 @@ const HeroGallery = ({ product }) => {
                         <ImageGallery
                             images={product.images}
                             selectedImage={selectedImage}
-                            width={500}
-                            height={500}
+                            width={{ desktop: 500 }}
+                            height={{ desktop: 500 }}
                         />
                     }
                 />

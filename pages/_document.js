@@ -26,7 +26,7 @@ export default function Document() {
       </Head>
       <body className="font-kumbhsans">
         <Main />
-        <div id="modal" />
+        <div id="modal" className="hidden desktop:block" />
         <NextScript />
       </body>
     </Html>

@@ -1,12 +1,12 @@
 import { FeaturedImageNav } from "./FeaturedImageNav"
-import { ImageClick } from "./ImageClick"
+import { ImageResponsive } from "./ImageResponsive"
 
 const FeaturedImage = ({ onClick, src, width, height, handleImageNav, wideLayout = false }) => (
     <FeaturedImageNav
         handleImageNav={handleImageNav}
         wideLayout={wideLayout}
     >
-        <ImageClick
+        <ImageResponsive
             src={src}
             onClick={onClick}
             width={width}
