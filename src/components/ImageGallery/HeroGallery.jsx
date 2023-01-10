@@ -9,7 +9,7 @@ const HeroGallery = ({ product }) => {
 
     return (
         <>
-            {/*ImageGallery: see util/tailwindWorkaround.js for arbitrary width/height */}
+            {/*ImageGallery: setup safeList in tailwind.config.js to use arbitrary width/height */}
             <ImageGallery
                 images={product.images}
                 setSelectedImage={setSelectedImage}

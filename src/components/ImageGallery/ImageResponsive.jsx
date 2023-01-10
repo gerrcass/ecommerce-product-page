@@ -1,5 +1,4 @@
 import Image from "next/image"
-import { getStyles } from '../../utils/tailwindWorkaround'
 
 const ImageResponsive = ({ src, onClick = undefined, width, height }) => {
 
@@ -18,8 +17,14 @@ const ImageResponsive = ({ src, onClick = undefined, width, height }) => {
         }
     }
 
-    const mobileDimensions = width.mobile && height.mobile ? getStyles('mobileWidth', width.mobile) + ' ' + getStyles('mobileHeight', height.mobile) : ''
-    const desktopDimensions = width.desktop && height.desktop ? getStyles('desktopWidth', width.desktop) + ' ' + getStyles('desktopHeight', height.desktop) : ''
+    /* 
+    https://tailwindcss.com/docs/content-configuration#dynamic-class-names
+
+    Those classes must be declared in tailwind.config.js as 'safeList' because of Tailwind needs 
+    class names as complete unbroken strings.
+    */
+    const mobileDimensions = width.mobile && height.mobile ? `w-[${width.mobile}px] h-[${height.mobile}px]` : ''
+    const desktopDimensions = width.desktop && height.desktop ? `desktop:w-[${width.desktop}px] desktop:h-[${height.desktop}px]` : ''
 
     return (
         <div

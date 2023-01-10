@@ -4,7 +4,7 @@ import { Footer } from "./components/Footer/Footer";
 import { HeroTextArea } from "./components/Hero/HeroTextArea";
 import { HeroImageArea } from "./components/Hero/HeroImageArea";
 
-import { useFakeDataBase } from "./hooks/useFakeDataBase";
+import { useFakeDataBase } from "../hooks/useFakeDataBase";
 
 export default function Home() {
   const { products, cartItems, addToCard, removeFromCard } = useFakeDataBase();

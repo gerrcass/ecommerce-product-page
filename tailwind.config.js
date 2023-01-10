@@ -3,21 +3,21 @@ module.exports = {
   //purge: ["./public/**/*.html"],
   //mode: "jit",
   content: [
-    "./pages/**/*.{js,ts,jsx,tsx}",
-    "./components/**/*.{js,ts,jsx,tsx}",
+    "./src/pages/**/*.{js,ts,jsx,tsx}",
+    "./src/components/**/*.{js,ts,jsx,tsx}",
   ],
-  /* safelist: [
+  safelist: [
     "w-[375px]",
     "h-[300px]",
-    "desktop:w-[437px]",
-    "desktop:h-[437px]",
+    "desktop:w-[400px]",
+    "desktop:h-[400px]",
     "desktop:w-[500px]",
     "desktop:h-[500px]",
-    //{
-    //  pattern: /desktop:w-[(400|500)px]/,
-    //  //variants: ["desktop"],
-    //},
-  ], */
+    /* {
+      pattern: /(w|h)-\[(375|300|400|500)px\]/,
+      variants: ["desktop"],
+    }, */
+  ],
   theme: {
     fontFamily: {
       kumbhsans: '"Kumbh Sans", sans-serif',
