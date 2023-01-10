@@ -1,14 +1,6 @@
 import Image from "next/image"
-import { useEffect, useState } from "react"
 
 const ImageResponsive = ({ src, onClick = undefined, width, height }) => {
-    const [prioritizeImageLoading, setPrioritizeImageLoading] = useState(true)
-
-    useEffect(() => {
-        setPrioritizeImageLoading(false)
-    }, [prioritizeImageLoading])
-
-
 
     const handleClick = () => {
         //👇click event listener only when needed, hence return undefined
@@ -46,7 +38,7 @@ const ImageResponsive = ({ src, onClick = undefined, width, height }) => {
                 className="mx-auto object-cover desktop:object-contain desktop:rounded-xl select-none"
                 alt='Product image'
                 sizes="(max-width: 1024px) 100vw, 50vw"
-                priority={prioritizeImageLoading}
+                priority={true}
             />
         </div>
     )
