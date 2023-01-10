@@ -17,9 +17,9 @@ const HeroText = ({ product, addToCard }) => {
 
     return (
         <>
-            <h2 className="tracking-wider text-primary-orange uppercase text-sm font-bold mb-3 min-w-max">{company}</h2>
+            <h2 className="tracking-wider text-primary-orange uppercase text-sm font-bold mb-3 whitespace-nowrap">{company}</h2>
             <h1 className="text-[2rem] desktop:text-[2.9rem] font-extrabold mb-5 text-black leading-8 desktop:leading-[2.9rem]">{name}</h1>
-            <p className="text-neutral-darkgrayishblue text-[15px] desktop:text-base mb-6 leading-6">{desc}</p>
+            <p className="text-neutral-darkgrayishblue text-base desktop:text-base mb-6 leading-6">{desc}</p>
 
             <div className="w-full flex desktop:flex-col mb-6 items-center desktop:items-start justify-between">
                 <div className="flex items-center">
@@ -30,11 +30,11 @@ const HeroText = ({ product, addToCard }) => {
             </div>
             <div className="flex flex-col desktop:flex-row justify-between space-y-4 desktop:space-y-0 w-full desktop:w-auto">
                 <div className={`${quantity_available === 0 && 'opacity-40'} w-full desktop:w-32 h-[3.3rem] desktop:h-12 flex justify-between items-center rounded-xl bg-neutral-lightgrayishblue`}>
-                    <button onClick={handleDecrement} className={`${count === 0 && 'opacity-40'} p-4 fill-primary-orange opacity-80 hover:opacity-100 transition font-bold text-2xl flex justify-center items-center`} type="button">
+                    <button onClick={handleDecrement} className={`${count === 0 && 'opacity-40'} p-4 fill-primary-orange opacity-80 hover:opacity-100 transition font-bold text-2xl flex justify-center items-center`} type="button" aria-label="Decrease the quantity of the item to be added">
                         <svg width="12" height="4" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink"><defs><path d="M11.357 3.332A.641.641 0 0 0 12 2.69V.643A.641.641 0 0 0 11.357 0H.643A.641.641 0 0 0 0 .643v2.046c0 .357.287.643.643.643h10.714Z" id="a" /></defs><use fillRule="nonzero" xlinkHref="#a" /></svg>
                     </button>
                     <span className="text-center text-base desktop:text-sm font-semibold select-none w-4">{count}</span>
-                    <button onClick={handleIncrement} className={`${count === quantity_available && 'opacity-40'} p-4 fill-primary-orange opacity-80 hover:opacity-100 font-bold text-2xl flex justify-center items-center`} type=" button">
+                    <button onClick={handleIncrement} className={`${count === quantity_available && 'opacity-40'} p-4 fill-primary-orange opacity-80 hover:opacity-100 font-bold text-2xl flex justify-center items-center`} type=" button" aria-label="Increase the quantity of the item to be added">
                         <svg width="12" height="12" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink"><defs><path d="M12 7.023V4.977a.641.641 0 0 0-.643-.643h-3.69V.643A.641.641 0 0 0 7.022 0H4.977a.641.641 0 0 0-.643.643v3.69H.643A.641.641 0 0 0 0 4.978v2.046c0 .356.287.643.643.643h3.69v3.691c0 .356.288.643.644.643h2.046a.641.641 0 0 0 .643-.643v-3.69h3.691A.641.641 0 0 0 12 7.022Z" id="b" /></defs><use fillRule="nonzero" xlinkHref="#b" /></svg>
                     </button>
                 </div>

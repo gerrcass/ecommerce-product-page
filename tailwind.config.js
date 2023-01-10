@@ -14,7 +14,7 @@ module.exports = {
     "desktop:w-[500px]",
     "desktop:h-[500px]",
     /* {
-      pattern: /(w|h)-\[(375|300|400|500)px\]/,
+      pattern: /(w|h)-\[(375|300|400|500)px\]/, //to be tested
       variants: ["desktop"],
     }, */
   ],
