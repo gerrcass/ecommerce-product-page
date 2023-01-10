@@ -16,7 +16,6 @@ const HeroGallery = ({ product }) => {
                 onClick={{ desktop: () => setOpenModal(true) }}
                 width={{ mobile: 375, desktop: 400 }}
                 height={{ mobile: 300, desktop: 400 }}
-
             />
             {openModal &&
                 <Lightbox

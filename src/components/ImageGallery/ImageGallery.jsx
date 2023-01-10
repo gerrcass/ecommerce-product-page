@@ -22,6 +22,7 @@ const ImageGallery = (
         const imgIndex = images.findIndex(img => img.thumbnail === activeImage)
         return images[imgIndex].large
     }
+
     const handleImageNav = (operation) => {
         const imgIndex = images.findIndex(img => img.thumbnail === activeImage)
         const nextImage = operation === 'next' ? images[imgIndex + 1] : images[imgIndex - 1]
