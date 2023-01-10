@@ -9,6 +9,7 @@ const ImageResponsive = ({ src, onClick = undefined, width, height }) => {
         /* 👇 button click handler code only runs on client (no need to check for window object)
         if (typeof window === "undefined") return */
 
+        //Although the style guide requires widths of 1440px.👇
         const isMobile = window.matchMedia("(max-width: 1024px)").matches
         if (isMobile) {
             return onClick.mobile ? onClick.mobile() : undefined
