@@ -1,7 +1,7 @@
 
 const FeaturedImageNav = ({ children, wideLayout, handleImageNav }) => {
     return (
-        <div className="relative">
+        <div className="w-full relative">
             <button
                 type='button'
                 onClick={() => handleImageNav('next')}

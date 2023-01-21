@@ -12,9 +12,9 @@ const Header = ({ cartItems, removeFromCard }) => {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
     return (
-        <header className="sticky top-0 z-30 bg-white flex justify-between h-[67px] desktop:h-24 mx-auto max-w-[375px] desktop:max-w-[66rem] border-b border-neutral-grayishblue border-opacity-20">
-            <div className="w-full flex justify-between items-center px-5 desktop:px-0">
-                <div className="flex items-center h-full desktop:flex-row-reverse">
+        <header className="sticky top-0 z-30 bg-white flex justify-between h-[67px] md:h-24 mx-auto min-w-[320px] md:max-w-[66rem] border-b border-neutral-grayishblue border-opacity-20">
+            <div className="w-full flex justify-between items-center px-5 md:px-0">
+                <div className="flex items-center h-full md:flex-row-reverse">
                     <NavBar openMobileMenu={setIsMobileMenuOpen} />
                     <Logo />
                 </div>

@@ -1,36 +1,33 @@
 import Image from "next/image"
 
+import useMediaQuery from '../../hooks/useMediaQuery'
+
 const ImageResponsive = ({ src, onClick = undefined, width, height }) => {
+
+    //Although the style guide requires widths of 1440px.👇
+    const isNarrowScreen = useMediaQuery('(max-width: 1024px)');
 
     const handleClick = () => {
         //👇click event listener only when needed, hence return undefined
         if (!onClick) return undefined
 
-        /* 👇 button click handler code only runs on client (no need to check for window object)
-        if (typeof window === "undefined") return */
-
-        //Although the style guide requires widths of 1440px.👇
-        const isMobile = window.matchMedia("(max-width: 1024px)").matches
-        if (isMobile) {
+        //const isMobile = window.matchMedia("(max-width: 1024px)").matches
+        if (isNarrowScreen) {
             return onClick.mobile ? onClick.mobile() : undefined
         } else {
             return onClick.desktop ? onClick.desktop() : undefined
         }
     }
 
+    const imageWidth = isNarrowScreen ? width?.mobile : width?.desktop
 
-    /* 
-    https://tailwindcss.com/docs/content-configuration#dynamic-class-names
-
-    Those classes must be declared in tailwind.config.js as 'safeList' because of Tailwind needs 
-    class names as complete unbroken strings.
-    */
-    const mobileDimensions = width.mobile && height.mobile ? `w-[${width.mobile}px] h-[${height.mobile}px]` : ''
-    const desktopDimensions = width.desktop && height.desktop ? `desktop:w-[${width.desktop}px] desktop:h-[${height.desktop}px]` : ''
+    //👇no need thanks to css aspect ratio property (5:4 mobile and 1:1 desktop)
+    const imageHeight = isNarrowScreen ? height?.mobile : height?.desktop
 
     return (
         <div
-            className={`relative overflow-hidden ${mobileDimensions} ${desktopDimensions}`}
+            className={`relative overflow-hidden w-full aspect-[5/4] desktop:aspect-square`}
+            style={{ minWidth: imageWidth, minHeight: imageHeight }}
         >
             <Image
                 fill
@@ -41,7 +38,7 @@ const ImageResponsive = ({ src, onClick = undefined, width, height }) => {
                 sizes="(max-width: 1024px) 100vw, 50vw"
                 priority={true}
             />
-        </div>
+        </div >
     )
 }
 

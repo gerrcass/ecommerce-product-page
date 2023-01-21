@@ -1,22 +1,8 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  //purge: ["./public/**/*.html"],
-  //mode: "jit",
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx}",
     "./src/components/**/*.{js,ts,jsx,tsx}",
-  ],
-  safelist: [
-    "w-[375px]",
-    "h-[300px]",
-    "desktop:w-[400px]",
-    "desktop:h-[400px]",
-    "desktop:w-[500px]",
-    "desktop:h-[500px]",
-    /* {
-      pattern: /(w|h)-\[(375|300|400|500)px\]/, //to be tested
-      variants: ["desktop"],
-    }, */
   ],
   theme: {
     fontFamily: {

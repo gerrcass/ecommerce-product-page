@@ -12,10 +12,12 @@ export default function Home() {
   return (
     <>
       <Header cartItems={cartItems} removeFromCard={removeFromCard} />
-      <Hero>
-        <HeroImageArea product={products[0]} />
-        <HeroTextArea product={products[0]} addToCard={addToCard} />
-      </Hero>
+      <main>
+        <Hero>
+          <HeroImageArea product={products[0]} />
+          <HeroTextArea product={products[0]} addToCard={addToCard} />
+        </Hero>
+      </main>
       <Footer />
     </>
   );

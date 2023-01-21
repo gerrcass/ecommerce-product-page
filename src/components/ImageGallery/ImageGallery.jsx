@@ -30,7 +30,7 @@ const ImageGallery = (
     }
 
     return (
-        <div id="gallery-container">
+        <div className='w-full desktop:w-fit'>
             <FeaturedImage
                 onClick={onClick}
                 src={getActiveImagePath()}
